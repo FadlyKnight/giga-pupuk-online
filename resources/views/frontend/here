@@ -1,0 +1,30 @@
+<form action="/simpanPemesanan" method="post">
+        @csrf
+          <p>Alamat pengiriman</p>
+          <select name="jasa" id="alamat">
+              <option value="0">--pilih alamat--</option>
+              @foreach ($al as $i)
+              <option value="{{$i->jasa_id}}-{{$i->id}}">{{$i->detail}}</option>
+              @endforeach
+          </select>
+          {{-- jumlah berat barang --}}
+          <input type="hidden" id="berat" value="{{ $jumlah }}" disabled>
+          {{-- ------------------------------------------------------ --}}
+          <p>harga jumlah barang</p>
+          <input type="text" value="{{ $tot }}" class="barang" disabled>
+          <p>biaya ongkir</p>
+          <input type="text" class="ongkir" disabled >
+          <hr>
+          <p>kode diskon</p>
+          <input name="kod" type="text" id="dkod" placeholder="masukkan kode...">
+          <button type="button" id="dbut">gunakan kode</button>
+          <br>
+          <br>
+          <input type="text" id="dval" value="0" disabled>
+          <hr>
+          <p>total biaya pembayaran</p>
+          <input type="text" class="hasil" disabled>
+          <input type="hidden" class="hasil" name="total">
+
+          <button type="submit" value="Submit">pesan</button>
+      </form>
